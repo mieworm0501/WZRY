@@ -39,6 +39,6 @@ public class Play {
 				start.Show();
 			}
 		}
-		
+		scan.close();
 	}
 }
