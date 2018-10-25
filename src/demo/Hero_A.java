@@ -2,7 +2,7 @@ package demo;
 
 public class Hero_A extends BasicHero
 {
-	public Hero_A()
+	public Hero_A()		//≥ı ºªØ”¢–€A
 	{
 		Name = 'A';
 		HP = 10;
@@ -11,13 +11,5 @@ public class Hero_A extends BasicHero
 		Position[0] = 0;
 		Position[1] = 0;
 	}
-	void ChangeP(int x,int y)
-	{
-		Position[0] = x;
-		Position[1] = y;
-	}
-	int []GetP()
-	{
-		return Position;
-	}
+	
 }

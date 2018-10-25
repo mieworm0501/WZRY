@@ -11,13 +11,4 @@ public class Hero_B extends BasicHero
 		Position[0] = 1;
 		Position[1] = 0;
 	}
-	void ChangeP(int x,int y)
-	{
-		Position[0] = x;
-		Position[1] = y;
-	}
-	int []GetP()
-	{
-		return Position;
-	}
 }
