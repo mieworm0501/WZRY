@@ -129,6 +129,10 @@ public class Map extends BasicMap
 					System.out.println("该英雄已经移动过了，请输入其他指令");
 				}
 			}
+			if((one<'A'||one>'E')&&(one<'V'||one>'Z'))
+			{
+				System.out.println("场上无此英雄，请输入其他指令");
+			}
 		}
 	}
 	
@@ -141,9 +145,60 @@ public class Map extends BasicMap
 			{
 				if(where=='W')
 				{
-					map[MidP[0]-1][MidP[1]][1]='T';
+					if((MidP[0]-1)>=0)
+					{
+						map[MidP[0]-1][MidP[1]][1]='T';
+						Show();
+						map[MidP[0]-1][MidP[1]][1]='0';
+						Show();
+					}
+				}
+				else
+				if(where=='A')
+				{
+					if((MidP[1]-1)>=0)
+					{
+						map[MidP[0]][MidP[1]-1][1]='T';
+						Show();
+						map[MidP[0]][MidP[1]-1][1]='0';
+						Show();
+					}
+				}
+				else
+				if(where=='S')
+				{
+					if((MidP[0]+1)<=5)
+					{
+						map[MidP[0]+1][MidP[1]][1]='T';
+						Show();
+						map[MidP[0]+1][MidP[1]][1]='0';
+						Show();
+					}
+				}
+				else
+				if(where=='D')
+				{
+					if((MidP[1]+1)<=9)
+					{
+						map[MidP[0]][MidP[1]+1][1]='T';
+						Show();
+						map[MidP[0]][MidP[1]+1][1]='0';
+						Show();
+					}
+				}
+				else
+				{
+					System.out.println("攻击方向选取错误，请重新输入");
+				}
+			}
+			if(how=='F')
+			{
+				if(where=='W')
+				{
+					map[MidP[0]-1][MidP[1]][1]='F';
 					Show();
 					map[MidP[0]-1][MidP[1]][1]='0';
+					
 					Show();
 				}
 				else
@@ -172,7 +227,7 @@ public class Map extends BasicMap
 				}
 				else
 				{
-					System.out.println("未选取攻击方向，请重新输入");
+					System.out.println("攻击方向选取错误，请重新输入");
 				}
 			}
 		}
