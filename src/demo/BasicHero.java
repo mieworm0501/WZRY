@@ -1,6 +1,6 @@
 package demo;
 
-public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt,getIfwork,getIfattack {
+public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt,getIfwork,getIfattack,GetMP,UseMP {
 	int HP;			//血量
 	int MP;			//蓝量
 	int EXP;		//经验
@@ -58,6 +58,19 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	public char getname()
 	{
 		return Name;
+	}
+	public void useMP()
+	{
+		MP--;
+	}
+	public int getMP()
+	{
+		return MP;
+	}
+	public void addEXP()
+	{
+		EXP=EXP+10;
+		if(EXP==60)	EXP=0;
 	}
 	public void gethurt(char how)
 	{

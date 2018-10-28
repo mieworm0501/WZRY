@@ -16,6 +16,8 @@ public class Map extends BasicMap
 	getHurt gH;
 	getIfwork gIw;
 	getIfattack gIa;
+	GetMP gM;
+	UseMP uM;
 	public Map()
 	{
 		ReMap();
@@ -265,6 +267,7 @@ public class Map extends BasicMap
 					if(MidP[1]+2<=9)	map[MidP[0]+3][MidP[1]+2][1]='F';
 					Show();
 					getH();
+					map[MidP[0]+3][MidP[1]][1]='0';
 					if(MidP[1]-1>=0)	map[MidP[0]+3][MidP[1]-1][1]='0';
 					if(MidP[1]+1<=9)	map[MidP[0]+3][MidP[1]+1][1]='0';
 					if(MidP[1]-2>=0)	map[MidP[0]+3][MidP[1]-2][1]='0';
@@ -354,19 +357,19 @@ public class Map extends BasicMap
 		}
 		if(one=='A')
 		{
-			gP = A;Att = A;gIa = A;
+			gP = A;Att = A;gIa = A;gM = A;uM = A;
 		}
 		if(one=='B')
 		{
-			gP = B;Att = B;gIa = B;
+			gP = B;Att = B;gIa = B;gM = B;uM = B;
 		}
 		if(one=='Z')
 		{
-			gP = Z;Att = Z;gIa = Z;
+			gP = Z;Att = Z;gIa = Z;gM = Z;uM = Z;
 		}
 		if(one=='Y')
 		{
-			gP = Y;Att = Y;gIa = Y;
+			gP = Y;Att = Y;gIa = Y;gM = Y;uM = Y;
 		}
 		MidP = gP.GetP();
 		if(gIa.getifattack()==0)
@@ -374,6 +377,7 @@ public class Map extends BasicMap
 			System.out.println("该英雄已经攻击过了，请输入其他指令");
 			return 0;
 		}
+		
 		if(how!='F'&&how!='T'&&how!='M')
 		{
 			System.out.println("无此攻击技能，请输入其他指令");
@@ -392,15 +396,27 @@ public class Map extends BasicMap
 		}
 		if(how=='F')
 		{
+			if(gM.getMP()==0)
+			{
+				System.out.println("该英雄MP不足，请输入其他指令");
+				return 0;
+			}
 			attackF(where,MidP);
 			Att.attacked();
 			ifHeroalive();
+			uM.useMP();
 		}
 		if(how=='M')
 		{
+			if(gM.getMP()==0)
+			{
+				System.out.println("该英雄MP不足，请输入其他指令");
+				return 0;
+			}
 			attackM(MidP);
 			Att.attacked();
 			ifHeroalive();
+			uM.useMP();
 		}
 		A.getinfor();
 		B.getinfor();
@@ -459,22 +475,22 @@ public class Map extends BasicMap
 		if(A.ifwork()==0)
 		{
 			Po = A.GetP();
-			map[Po[0]][Po[1]][0] = '@';
+			map[Po[0]][Po[1]][0] = '#';
 		}
 		if(B.ifwork()==0)
 		{
 			Po = B.GetP();
-			map[Po[0]][Po[1]][0] = '@';
+			map[Po[0]][Po[1]][0] = '#';
 		}
 		if(Z.ifwork()==0)
 		{
 			Po = Z.GetP();
-			map[Po[0]][Po[1]][0] = '@';
+			map[Po[0]][Po[1]][0] = '#';
 		}
 		if(Y.ifwork()==0)
 		{
 			Po = Y.GetP();
-			map[Po[0]][Po[1]][0] = '@';
+			map[Po[0]][Po[1]][0] = '#';
 		}
 	}
 	
@@ -484,6 +500,10 @@ public class Map extends BasicMap
 		B.reset();
 		Y.reset();
 		Z.reset();
+		A.addEXP();
+		B.addEXP();
+		Z.addEXP();
+		Y.addEXP();
 		A.getinfor();
 		B.getinfor();
 		Z.getinfor();

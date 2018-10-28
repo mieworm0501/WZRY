@@ -13,6 +13,6 @@ public class Hero_Z extends BasicHero
 	}
 	void getinfor()
 	{
-		System.out.println("гЂал"+Name+"HP = "+HP+"/10 ; MP ="+MP+"/10; EXP ="+EXP+"/50 ;");
+		System.out.println("гЂал"+Name+"HP = "+HP+"/10 ; MP ="+MP+"/10; EXP ="+EXP+"/60 ;");
 	}
 }
