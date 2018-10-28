@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //exit	停止运行
 //end	结束回合
-//attack sub (W|A|S|D) 技能名（F指火焰，T指普通攻击，O指回旋斩） sub向(上|左|下|右)攻击
+//attack sub (W|A|S|D) 技能名（F指火焰，T指普通攻击，M指回旋斩） sub向(上|左|下|右)攻击
 //move sub x y	移动sub到x行y列(每次移动不能超过以自身为中心7x7的范围)
 
 public class Play {

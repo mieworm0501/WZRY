@@ -1,6 +1,6 @@
 package demo;
 
-public class BasicHero {
+public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt {
 	int HP;			//血量
 	int MP;			//蓝量
 	int EXP;		//经验
@@ -11,12 +11,12 @@ public class BasicHero {
 	int ifturn = 1;	//是否为它的回合
 	int ifalive = 1;	//是否死亡
 	
-	void ChangeP(int x,int y)	//改变位置
+	public void ChangeP(int x,int y)	//改变位置
 	{
 		Position[0] = x;
 		Position[1] = y;
 	}
-	int []GetP()		//返回当前位置
+	public int []GetP()		//返回当前位置
 	{
 		return Position;
 	}
@@ -34,11 +34,15 @@ public class BasicHero {
 		if(MP<=0)	return 0;
 		else	return 1;
 	}
-	void moved()		//已经移动
+	public int getifmove()
+	{
+		return ifmove;
+	}
+	public void moved()		//已经移动
 	{
 		ifmove = 0;
 	}
-	void attacked()		//已经攻击
+	public void attacked()		//已经攻击
 	{
 		ifattack = 0;
 	}
@@ -46,6 +50,24 @@ public class BasicHero {
 	{
 		ifmove = 1;
 		ifattack = 1;
+	}
+	public char getname()
+	{
+		return Name;
+	}
+	public void gethurt(char how)
+	{
+		if(ifwork()==1)
+		{
+			if(how=='F')	HP=HP-2;
+			if(how=='M')	HP=HP-3;
+			if(how=='T')	HP=HP-4;
+			ifHeroDie();
+		}
+		else
+		{
+			
+		}
 	}
 }
 
