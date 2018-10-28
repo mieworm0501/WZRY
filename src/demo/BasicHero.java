@@ -1,6 +1,6 @@
 package demo;
 
-public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt {
+public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt,getIfwork {
 	int HP;			//血量
 	int MP;			//蓝量
 	int EXP;		//经验
@@ -24,7 +24,7 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	{
 		if(HP<=0)	ifalive = 0;
 	}
-	int ifwork()		//是否存活
+	public int ifwork()		//是否存活
 	{
 		if(ifalive==0)	return 0;
 		else	return 1;
@@ -59,10 +59,26 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	{
 		if(ifwork()==1)
 		{
-			if(how=='F')	HP=HP-2;
-			if(how=='M')	HP=HP-3;
-			if(how=='T')	HP=HP-4;
+			if(how=='F')
+			{
+				HP=HP-2;
+				System.out.println("英雄"+Name+"受到2点伤害，剩下 "+HP+" HP");
+			}
+			if(how=='M')
+			{
+				HP=HP-3;
+				System.out.println("英雄"+Name+"受到3点伤害，剩下 "+HP+" HP");
+			}
+			if(how=='T')
+			{
+				HP=HP-4;
+				System.out.println("英雄"+Name+"受到4点伤害，剩下 "+HP+" HP");
+			}
 			ifHeroDie();
+			if(ifwork()==0)
+			{
+				System.out.println("英雄"+Name+"死亡");
+			}
 		}
 		else
 		{

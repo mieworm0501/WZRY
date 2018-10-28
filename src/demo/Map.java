@@ -14,6 +14,7 @@ public class Map extends BasicMap
 	Moved Mov;
 	Attacked Att;
 	getHurt gH;
+	getIfwork gIw;
 	public Map()
 	{
 		ReMap();
@@ -92,6 +93,7 @@ public class Map extends BasicMap
 			{
 				map[MidP[0]-1][MidP[1]][1]='T';
 				Show();
+				getH();
 				map[MidP[0]-1][MidP[1]][1]='0';
 			}
 		}
@@ -102,6 +104,7 @@ public class Map extends BasicMap
 			{
 				map[MidP[0]][MidP[1]-1][1]='T';
 				Show();
+				getH();
 				map[MidP[0]][MidP[1]-1][1]='0';
 			}
 		}
@@ -112,6 +115,7 @@ public class Map extends BasicMap
 			{
 				map[MidP[0]+1][MidP[1]][1]='T';
 				Show();
+				getH();
 				map[MidP[0]+1][MidP[1]][1]='0';
 			}
 		}
@@ -122,6 +126,7 @@ public class Map extends BasicMap
 			{
 				map[MidP[0]][MidP[1]+1][1]='T';
 				Show();
+				getH();
 				map[MidP[0]][MidP[1]+1][1]='0';
 			}
 		}
@@ -164,6 +169,7 @@ public class Map extends BasicMap
 		{
 			map[MidP[0]-1][MidP[1]][1]='F';
 			Show();
+			getH();
 			map[MidP[0]-1][MidP[1]][1]='0';
 			if(MidP[0]-2>=0)
 			{
@@ -171,6 +177,7 @@ public class Map extends BasicMap
 				if(MidP[1]-1>=0)	map[MidP[0]-2][MidP[1]-1][1]='F';
 				if(MidP[1]+1<=9)	map[MidP[0]-2][MidP[1]+1][1]='F';
 				Show();
+				getH();
 				map[MidP[0]-2][MidP[1]][1]='0';
 				if(MidP[1]-1>=0)	map[MidP[0]-2][MidP[1]-1][1]='0';
 				if(MidP[1]+1<=9)	map[MidP[0]-2][MidP[1]+1][1]='0';
@@ -182,6 +189,7 @@ public class Map extends BasicMap
 					if(MidP[1]-2>=0)	map[MidP[0]-3][MidP[1]-2][1]='F';
 					if(MidP[1]+2<=9)	map[MidP[0]-3][MidP[1]+2][1]='F';
 					Show();
+					getH();
 					map[MidP[0]-3][MidP[1]][1]='0';
 					if(MidP[1]-1>=0)	map[MidP[0]-3][MidP[1]-1][1]='0';
 					if(MidP[1]+1<=9)	map[MidP[0]-3][MidP[1]+1][1]='0';
@@ -198,6 +206,7 @@ public class Map extends BasicMap
 		{
 			map[MidP[0]][MidP[1]-1][1]='F';
 			Show();
+			getH();
 			map[MidP[0]][MidP[1]-1][1]='0';
 			if(MidP[1]-2>=0)
 			{
@@ -205,6 +214,7 @@ public class Map extends BasicMap
 				if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]-2][1]='F';
 				if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]-2][1]='F';
 				Show();
+				getH();
 				map[MidP[0]][MidP[1]-2][1]='0';
 				if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]-2][1]='0';
 				if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]-2][1]='0';
@@ -216,6 +226,7 @@ public class Map extends BasicMap
 					if(MidP[0]+2<=5)	map[MidP[0]+2][MidP[1]-3][1]='F';
 					if(MidP[0]-2>=0)	map[MidP[0]-2][MidP[1]-3][1]='F';
 					Show();
+					getH();
 					map[MidP[0]][MidP[1]-3][1]='0';
 					if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]-3][1]='0';
 					if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]-3][1]='0';
@@ -232,6 +243,7 @@ public class Map extends BasicMap
 		{
 			map[MidP[0]+1][MidP[1]][1]='F';
 			Show();
+			getH();
 			map[MidP[0]+1][MidP[1]][1]='0';
 			if(MidP[0]+2<=5)
 			{
@@ -239,6 +251,7 @@ public class Map extends BasicMap
 				if(MidP[1]-1>=0)	map[MidP[0]+2][MidP[1]-1][1]='F';
 				if(MidP[1]+1<=9)	map[MidP[0]+2][MidP[1]+1][1]='F';
 				Show();
+				getH();
 				map[MidP[0]+2][MidP[1]][1]='0';
 				if(MidP[1]-1>=0)	map[MidP[0]+2][MidP[1]-1][1]='0';
 				if(MidP[1]+1<=9)	map[MidP[0]+2][MidP[1]+1][1]='0';
@@ -250,6 +263,7 @@ public class Map extends BasicMap
 					if(MidP[1]-2>=0)	map[MidP[0]+3][MidP[1]-2][1]='F';
 					if(MidP[1]+2<=9)	map[MidP[0]+3][MidP[1]+2][1]='F';
 					Show();
+					getH();
 					if(MidP[1]-1>=0)	map[MidP[0]+3][MidP[1]-1][1]='0';
 					if(MidP[1]+1<=9)	map[MidP[0]+3][MidP[1]+1][1]='0';
 					if(MidP[1]-2>=0)	map[MidP[0]+3][MidP[1]-2][1]='0';
@@ -265,6 +279,7 @@ public class Map extends BasicMap
 		{
 			map[MidP[0]][MidP[1]+1][1]='F';
 			Show();
+			getH();
 			map[MidP[0]][MidP[1]+1][1]='0';
 			if(MidP[1]+2<=9)
 			{
@@ -272,6 +287,7 @@ public class Map extends BasicMap
 				if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]+2][1]='F';
 				if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]+2][1]='F';
 				Show();
+				getH();
 				map[MidP[0]][MidP[1]+2][1]='0';
 				if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]+2][1]='0';
 				if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]+2][1]='0';
@@ -283,6 +299,7 @@ public class Map extends BasicMap
 					if(MidP[0]+2<=5)	map[MidP[0]+2][MidP[1]+3][1]='F';
 					if(MidP[0]-2>=0)	map[MidP[0]-2][MidP[1]+3][1]='F';
 					Show();
+					getH();
 					map[MidP[0]][MidP[1]+3][1]='0';
 					if(MidP[0]+1<=5)	map[MidP[0]+1][MidP[1]+3][1]='0';
 					if(MidP[0]-1>=0)	map[MidP[0]-1][MidP[1]+3][1]='0';
@@ -310,6 +327,7 @@ public class Map extends BasicMap
 		if((MidP[0]+1)<=5)	map[MidP[0]+1][MidP[1]][1]='M';
 		if((MidP[0]-1)>=0)	map[MidP[0]-1][MidP[1]][1]='M';
 		Show();
+		getH();
 		if((MidP[1]+1)<=9)
 		{
 			map[MidP[0]][MidP[1]+1][1]='0';
@@ -364,21 +382,18 @@ public class Map extends BasicMap
 		{
 			attackT(where,MidP);
 			Att.attacked();
-			getH();
 			return 0;
 		}
 		if(how=='F')
 		{
 			attackF(where,MidP);
 			Att.attacked();
-			getH();
 			return 0;
 		}
 		if(how=='M')
 		{
 			attackM(MidP);
 			Att.attacked();
-			getH();
 			return 0;
 		}
 		return 0;
@@ -392,28 +407,38 @@ public class Map extends BasicMap
 			{
 				if(map[i][j][1]=='T')
 				{
-					if(map[i][j][0]=='A')	gH = A;
-					if(map[i][j][0]=='B')	gH = B;
-					if(map[i][j][0]=='Z')	gH = Z;
-					if(map[i][j][0]=='Y')	gH = Y;
-					gH.gethurt('T');
+					if(map[i][j][0]=='A')	
+					{gH = A;gIw = A;gH.gethurt('T');}
+					if(map[i][j][0]=='B')	
+					{gH = B;gIw = B;gH.gethurt('T');}
+					if(map[i][j][0]=='Z')
+					{gH = Z;gIw = Z;gH.gethurt('T');}
+					if(map[i][j][0]=='Y')
+					{gH = Y;gIw = Y;gH.gethurt('T');}
 				}
 				if(map[i][j][1]=='F')
 				{
-					if(map[i][j][0]=='A')	gH = A;
-					if(map[i][j][0]=='B')	gH = B;
-					if(map[i][j][0]=='Z')	gH = Z;
-					if(map[i][j][0]=='Y')	gH = Y;
-					gH.gethurt('F');
+					if(map[i][j][0]=='A')	
+					{gH = A;gIw = A;gH.gethurt('F');}
+					if(map[i][j][0]=='B')	
+					{gH = B;gIw = B;gH.gethurt('F');}
+					if(map[i][j][0]=='Z')
+					{gH = Z;gIw = Z;gH.gethurt('F');}
+					if(map[i][j][0]=='Y')
+					{gH = Y;gIw = Y;gH.gethurt('F');}
 				}
 				if(map[i][j][1]=='M')
 				{
-					if(map[i][j][0]=='A')	gH = A;
-					if(map[i][j][0]=='B')	gH = B;
-					if(map[i][j][0]=='Z')	gH = Z;
-					if(map[i][j][0]=='Y')	gH = Y;
-					gH.gethurt('M');
+					if(map[i][j][0]=='A')	
+					{gH = A;gIw = A;gH.gethurt('M');}
+					if(map[i][j][0]=='B')	
+					{gH = B;gIw = B;gH.gethurt('M');}
+					if(map[i][j][0]=='Z')
+					{gH = Z;gIw = Z;gH.gethurt('M');}
+					if(map[i][j][0]=='Y')
+					{gH = Y;gIw = Y;gH.gethurt('M');}
 				}
+				
 			}
 		}
 	}
