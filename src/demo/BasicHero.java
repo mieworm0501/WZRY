@@ -1,6 +1,6 @@
 package demo;
 
-public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt,getIfwork {
+public class BasicHero implements getPosition,getIfmove,getName,changePosition,Moved,Attacked,getHurt,getIfwork,getIfattack {
 	int HP;			//血量
 	int MP;			//蓝量
 	int EXP;		//经验
@@ -37,6 +37,10 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	public int getifmove()
 	{
 		return ifmove;
+	}
+	public int getifattack()
+	{
+		return ifattack;
 	}
 	public void moved()		//已经移动
 	{

@@ -11,5 +11,8 @@ public class Hero_Y extends BasicHero
 		Position[0] = 1;
 		Position[1] = 9;
 	}
-	
+	void getinfor()
+	{
+		System.out.println("гЂал"+Name+"HP = "+HP+"/20 ; MP ="+MP+"/5 ; EXP ="+EXP+"/50 ;");
+	}
 }

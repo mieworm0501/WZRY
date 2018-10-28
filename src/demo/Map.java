@@ -15,6 +15,7 @@ public class Map extends BasicMap
 	Attacked Att;
 	getHurt gH;
 	getIfwork gIw;
+	getIfattack gIa;
 	public Map()
 	{
 		ReMap();
@@ -353,21 +354,26 @@ public class Map extends BasicMap
 		}
 		if(one=='A')
 		{
-			gP = A;Att = A;
+			gP = A;Att = A;gIa = A;
 		}
 		if(one=='B')
 		{
-			gP = B;Att = B;
+			gP = B;Att = B;gIa = B;
 		}
 		if(one=='Z')
 		{
-			gP = Z;Att = Z;
+			gP = Z;Att = Z;gIa = Z;
 		}
 		if(one=='Y')
 		{
-			gP = Y;Att = Y;
+			gP = Y;Att = Y;gIa = Y;
 		}
 		MidP = gP.GetP();
+		if(gIa.getifattack()==0)
+		{
+			System.out.println("该英雄已经攻击过了，请输入其他指令");
+			return 0;
+		}
 		if(how!='F'&&how!='T'&&how!='M')
 		{
 			System.out.println("无此攻击技能，请输入其他指令");
@@ -382,20 +388,24 @@ public class Map extends BasicMap
 		{
 			attackT(where,MidP);
 			Att.attacked();
-			return 0;
+			ifHeroalive();
 		}
 		if(how=='F')
 		{
 			attackF(where,MidP);
 			Att.attacked();
-			return 0;
+			ifHeroalive();
 		}
 		if(how=='M')
 		{
 			attackM(MidP);
 			Att.attacked();
-			return 0;
+			ifHeroalive();
 		}
+		A.getinfor();
+		B.getinfor();
+		Z.getinfor();
+		Y.getinfor();
 		return 0;
 	}
 	
@@ -443,11 +453,40 @@ public class Map extends BasicMap
 		}
 	}
 	
+	void ifHeroalive()
+	{
+		int []Po = {0,0};
+		if(A.ifwork()==0)
+		{
+			Po = A.GetP();
+			map[Po[0]][Po[1]][0] = '@';
+		}
+		if(B.ifwork()==0)
+		{
+			Po = B.GetP();
+			map[Po[0]][Po[1]][0] = '@';
+		}
+		if(Z.ifwork()==0)
+		{
+			Po = Z.GetP();
+			map[Po[0]][Po[1]][0] = '@';
+		}
+		if(Y.ifwork()==0)
+		{
+			Po = Y.GetP();
+			map[Po[0]][Po[1]][0] = '@';
+		}
+	}
+	
 	void resetHero()	//回合结束，重置英雄移动和攻击
 	{
 		A.reset();
 		B.reset();
 		Y.reset();
 		Z.reset();
+		A.getinfor();
+		B.getinfor();
+		Z.getinfor();
+		Y.getinfor();
 	}
 }
