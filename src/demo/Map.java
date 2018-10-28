@@ -48,21 +48,13 @@ public class Map extends BasicMap
 				return 0;
 			}
 			if(one=='A')
-			{
-				gP = A;gIm = A;gN = A;cP = A;Mov = A;
-			}
+			{gP = A;gIm = A;gN = A;cP = A;Mov = A;}
 			if(one=='B')
-			{
-				gP = B;gIm = B;gN = B;cP = B;Mov = B;
-			}
+			{gP = B;gIm = B;gN = B;cP = B;Mov = B;}
 			if(one=='Z')
-			{
-				gP = Z;gIm = Z;gN = Z;cP = Z;Mov = Z;
-			}
+			{gP = Z;gIm = Z;gN = Z;cP = Z;Mov = Z;}
 			if(one=='Y')
-			{
-				gP = Y;gIm = Y;gN = Y;cP = Y;Mov = Y;
-			}
+			{gP = Y;gIm = Y;gN = Y;cP = Y;Mov = Y;}
 			MidP = gP.GetP();
 			if(gIm.getifmove()==1)
 			{
@@ -80,10 +72,7 @@ public class Map extends BasicMap
 					else	System.out.println("未成功移动，请重新输入");
 				}
 			}
-			else
-			{
-				System.out.println("该英雄已经移动过了，请输入其他指令");
-			}
+			else	System.out.println("该英雄已经移动过了，请输入其他指令");
 		}
 		return 0;
 	}
@@ -348,7 +337,7 @@ public class Map extends BasicMap
 		if((MidP[0]-1)>=0)	map[MidP[0]-1][MidP[1]][1]='0';
 	}
 	
-	int subAttack(char one,char how,char where)
+	int subAttack(char one,char how,char where)		//英雄攻击
 	{
 		if((one<'A'||one>'E')&&(one<'V'||one>'Z'))
 		{
@@ -356,38 +345,20 @@ public class Map extends BasicMap
 			return 0;
 		}
 		if(one=='A')
-		{
-			gP = A;Att = A;gIa = A;gM = A;uM = A;
-		}
+		{gP = A;Att = A;gIa = A;gM = A;uM = A;}
 		if(one=='B')
-		{
-			gP = B;Att = B;gIa = B;gM = B;uM = B;
-		}
+		{gP = B;Att = B;gIa = B;gM = B;uM = B;}
 		if(one=='Z')
-		{
-			gP = Z;Att = Z;gIa = Z;gM = Z;uM = Z;
-		}
+		{gP = Z;Att = Z;gIa = Z;gM = Z;uM = Z;}
 		if(one=='Y')
-		{
-			gP = Y;Att = Y;gIa = Y;gM = Y;uM = Y;
-		}
+		{gP = Y;Att = Y;gIa = Y;gM = Y;uM = Y;}
 		MidP = gP.GetP();
 		if(gIa.getifattack()==0)
-		{
-			System.out.println("该英雄已经攻击过了，请输入其他指令");
-			return 0;
-		}
-		
+		{System.out.println("该英雄已经攻击过了，请输入其他指令");return 0;}
 		if(how!='F'&&how!='T'&&how!='M')
-		{
-			System.out.println("无此攻击技能，请输入其他指令");
-			return 0;
-		}
+		{System.out.println("无此攻击技能，请输入其他指令");return 0;}
 		if(where!='W'&&where!='A'&&where!='S'&&where!='D')
-		{
-			System.out.println("攻击方向有误，请输入其他指令");
-			return 0;
-		}
+		{System.out.println("攻击方向有误，请输入其他指令");return 0;}
 		if(how=='T')
 		{
 			attackT(where,MidP);
@@ -397,10 +368,7 @@ public class Map extends BasicMap
 		if(how=='F')
 		{
 			if(gM.getMP()==0)
-			{
-				System.out.println("该英雄MP不足，请输入其他指令");
-				return 0;
-			}
+			{System.out.println("该英雄MP不足，请输入其他指令");return 0;}
 			attackF(where,MidP);
 			Att.attacked();
 			ifHeroalive();
@@ -409,20 +377,13 @@ public class Map extends BasicMap
 		if(how=='M')
 		{
 			if(gM.getMP()==0)
-			{
-				System.out.println("该英雄MP不足，请输入其他指令");
-				return 0;
-			}
+			{System.out.println("该英雄MP不足，请输入其他指令");return 0;}
 			attackM(MidP);
 			Att.attacked();
 			ifHeroalive();
 			uM.useMP();
 		}
-		A.getinfor();
-		B.getinfor();
-		Z.getinfor();
-		Y.getinfor();
-		return 0;
+		A.getinfor();B.getinfor();Z.getinfor();Y.getinfor();return 0;
 	}
 	
 	void getH()
