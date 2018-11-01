@@ -1,6 +1,10 @@
 package demo;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 
 //exit	停止运行
 //end	结束回合
@@ -8,9 +12,29 @@ import java.util.Scanner;
 //move sub x y	移动sub到x行y列(每次移动不能超过以自身为中心7x7的范围)
 
 public class Play {
-	public static void main(String[] args)
+	public static String txt2String(File file){
+        StringBuilder result = new StringBuilder();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
+            String s = null;
+            while((s = br.readLine())!=null){//使用readLine方法，一次读一行
+                result.append(System.lineSeparator()+s);
+            }
+            br.close();    
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result.toString();
+    }
+	
+	
+	public static void main (String[] args) throws Exception
 	{
-		Scanner scan = new Scanner(System.in);
+		
+		File file = new File("D:/workplace/command.txt");
+		//BufferedReader AAA = new BufferedReader(new FileReader(file)); 
+		Scanner scan = new Scanner(file);
+		
 		int TIME = 1;
 		int x=0;
 		int y=0;
@@ -21,9 +45,10 @@ public class Play {
 		Map start = new Map();
 		while(true)
 		{
+			//System.out.println(txt2String(file));
 			System.out.println("第"+TIME+"回合");
 			start.Show();
-			System.out.print("请输入你的指令：");
+			System.out.println("请输入你的指令：");
 			command = scan.next();
 			if(command.equals("end"))
 			{
