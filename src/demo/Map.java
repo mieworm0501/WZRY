@@ -1,6 +1,6 @@
 package demo;
 
-public class Map extends BasicMap
+public class Map extends BasicMap 
 {
 	int []MidP = {0,0};
 	Hero_A A = new Hero_A();
