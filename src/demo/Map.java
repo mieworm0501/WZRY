@@ -1,8 +1,9 @@
 package demo;
 
-public class Map extends BasicMap 
+public class Map extends BasicMap implements Runnable
 {
 	int []MidP = {0,0};
+	int []Pass = {0,0};
 	Hero_A A = new Hero_A();
 	Hero_B B = new Hero_B();
 	Hero_Z Z = new Hero_Z();
@@ -23,7 +24,25 @@ public class Map extends BasicMap
 		ReMap();
 		GetHeroP();
 	}
-	
+	/*public void run()
+	{
+		while(true)
+		{
+			try {Thread.sleep(2000);}
+			catch(InterruptedException e){}
+			synchronized (this)
+			{
+				Pass = B.GetLastP();
+				MoveB(Pass[0],Pass[1]);
+				GetHeroP();
+				Show();
+				notifyAll();
+				try {wait();}
+				catch(InterruptedException e){}
+			}
+			
+		}
+	}*/
 	void GetHeroP()				//³õÊ¼»¯Ó¢ÐÛÎ»ÖÃ
 	{
 		MidP = A.GetP();
@@ -35,7 +54,10 @@ public class Map extends BasicMap
 		MidP = Y.GetP();
 		map[MidP[0]][MidP[1]][0]='Y';
 	}
-	
+	/*void MoveB(int x,int y)
+	{
+		map[x][y][0]='0';
+	}*/
 	int ChangeP(char one,int x,int y)		//ÒÆ¶¯Ó¢ÐÛÎ»ÖÃ
 	{
 		if(x>5||y>9)

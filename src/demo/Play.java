@@ -37,5 +37,6 @@ public static void main (String[] args) throws Exception
 		Control control = new Control();
 		Thread play = new Thread(control);
 		play.run();
+		
 	}
 }

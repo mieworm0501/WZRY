@@ -6,6 +6,7 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	int EXP;		//经验
 	char Name;		//名字，用大小写字母表示
 	int []Position = new int [2];	//位置，坐标
+	int []LastP = new int [2];
 	int ifmove = 1;	//是否可移动
 	int ifattack = 1;	//是否可攻击
 	int ifturn = 1;	//是否为它的回合
@@ -19,6 +20,10 @@ public class BasicHero implements getPosition,getIfmove,getName,changePosition,M
 	public int []GetP()		//返回当前位置
 	{
 		return Position;
+	}
+	public int []GetLastP()
+	{
+		return LastP;
 	}
 	void ifHeroDie()		//是否死亡
 	{
